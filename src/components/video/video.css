@@ -1,3 +1,4 @@
+@import '../../css/variables.css';
 .video__player {
   background: #000;
   position: absolute;
@@ -14,6 +15,7 @@
   pointer-events: none;
   transition: all 0.3s ease-out;
   overflow-y: auto;
+  z-index: var(--zindex-5);
 }
 .video__player.active {
   opacity: 1;

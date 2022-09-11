@@ -20,15 +20,15 @@ export class Alarm {
     }
 
     setAlarm() {
-        reset_alarm_btn.style.display = 'block';
-        set_alarm_btn.style.display = 'none';
-
-        hour_input.value = '';
-        minute_input.value = '';
-
         if (this.hour == '' || this.minute == '') {
             show_alarm.innerHTML = 'Preencha os campos';
             return;
+        } else {
+            reset_alarm_btn.style.display = 'block';
+            set_alarm_btn.style.display = 'none';
+
+            hour_input.value = '';
+            minute_input.value = '';
         }
 
         if (this.hour < 0 || this.hour > 23) {

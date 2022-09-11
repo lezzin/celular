@@ -1,8 +1,9 @@
-import { Alarm } from '../components/alarm/alarm.js';
+import * as config from '../components/config/config.js';
 import { calc, Calculator } from '../components/calculator/calculator.js';
 import { music_player, Player } from '../components/player/player.js';
 import { weather, Weather } from '../components/weather/weather.js';
 import { game, Game } from '../components/game/game.js';
+import * as alarm from '../components/alarm/alarm.js';
 
 export function displayMessage(text) {
     var message = document.querySelector('#phone__notify'),
@@ -31,6 +32,7 @@ const loader = document.querySelector('.loader'),
     video_screen = document.querySelector('.video__player'),
     initial__screen = document.querySelector('.initial__screen'),
     game_screen = document.querySelector('.game'),
+    config_screen = document.querySelector('.config__screen'),
 
     initial_hour_display = document.querySelector('#hour__initial__screen'),
     initial_date_display = document.querySelector('#date__initial__screen'),
@@ -39,12 +41,13 @@ const loader = document.querySelector('.loader'),
     weather_search_container = document.querySelector(".weather__search"),
 
     bg_setter = document.querySelector('#set__bg'),
-    alarm_oppener = document.querySelector('#open__clock'),
-    calculator_oppener = document.querySelector('#open__calculator'),
-    music_oppener = document.querySelector('#open__music'),
-    weather_oppener = document.querySelector('#open__weather'),
-    video_oppener = document.querySelector('#open__video'),
-    game_oppener = document.querySelector('#open__game'),
+    alarm_opener = document.querySelector('#open__clock'),
+    calculator_opener = document.querySelector('#open__calculator'),
+    music_opener = document.querySelector('#open__music'),
+    weather_opener = document.querySelector('#open__weather'),
+    video_opener = document.querySelector('#open__video'),
+    game_opener = document.querySelector('#open__game'),
+    config_opener = document.querySelector('#open__config'),
 
     form_music = document.querySelector('.form'),
     add_music_btn = document.querySelector('#form__add__music__toggler'),
@@ -60,14 +63,7 @@ const loader = document.querySelector('.loader'),
         50: 'fas fa-battery-half',
         75: 'fas fa-battery-three-quarters',
         100: 'fas fa-battery-full'
-    },
-
-    // modal elements
-    modal = document.querySelector('#modal'),
-    modal_oppener = document.querySelector('#modal__toggler'),
-    modal_close = document.querySelector('#modal__closer'),
-    input_change_message = document.querySelector('#config__name');
-
+    };
 
 // functions
 function setHour() {
@@ -136,32 +132,34 @@ function falseBattery() {
 
 // Função para melhorar a legibilidade do código
 const isActive = (elem, arr) => {
-    arr.forEach(function (item) {
-        if (item.classList.contains('active')) item.classList.remove('active');
-    });
+    arr.forEach(function (item) { if (item.classList.contains('active')) item.classList.remove('active'); });
 
-    if (elem == "") return;
-    elem.classList.add('active');
+    if (elem == "") return;;
+
+    if (Array.isArray(elem)) elem.forEach(function (item) {
+        if (!item.classList.contains('active')) item.classList.add('active');
+        if (item.classList.contains('inactive')) item.classList.remove('inactive');
+    });
+    else if (!elem.classList.contains('active')) elem.classList.add('active');
+    else displayMessage('Erro: O elemento já está ativo');
 }
 
 function openMenu() {
     if (!initial__screen.classList.contains('inactive')) initial__screen.classList.add('inactive');
     if (right_button.style.opacity == 0) right_button.style.opacity = 1;
     if (left_button.style.opacity == 0) left_button.style.opacity = 1;
-    isActive(menu_screen, [phone_screen, music_screen, alarm_screen, calculator, weather_screen, video_screen, game_screen]);
-    
+    isActive(menu_screen, [config_screen, phone_screen, music_screen, alarm_screen, calculator, weather_screen, weather_search_container, weather_result_container, video_screen, game_screen]);
+
     game.resetAll();
 }
 
-export const openAlarm = () => { isActive(alarm_screen, [menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
-export const openMusic = () => { isActive(music_screen, [menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
-const openVideo = () => { isActive(video_screen, [menu_screen, calculator, alarm_screen, music_screen, weather_screen]); }
-const openCalculator = () => { isActive(calculator, [phone_screen, music_screen, alarm_screen, menu_screen, weather_screen, video_screen, game_screen]); }
-const openWeather = () => { isActive(weather_screen, [menu_screen, calculator, alarm_screen, music_screen, video_screen]); weather.getWeather(); }
-const openGame = () => { isActive(game_screen, [menu_screen, calculator, alarm_screen, music_screen, video_screen, weather_screen]); }
-
-const openModal = () => { modal.classList.add('active'); modal_oppener.style.opacity = '0'; };
-const closeModal = () => { modal.classList.remove('active'); modal_oppener.style.opacity = '1'; };
+export const openAlarm = () => { isActive(alarm_screen, [config_screen, menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
+export const openMusic = () => { isActive(music_screen, [config_screen, menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
+const openVideo = () => { isActive(video_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, weather_screen]); }
+const openCalculator = () => { isActive(calculator, [config_screen, phone_screen, music_screen, alarm_screen, menu_screen, weather_screen, video_screen, game_screen]); }
+const openWeather = () => { isActive([weather_screen, weather_search_container], [config_screen, menu_screen, calculator, alarm_screen, music_screen, video_screen]); }
+const openGame = () => { isActive(game_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, video_screen, weather_screen]); }
+const openConfig = () => { isActive(config_screen, [menu_screen, calculator, alarm_screen, music_screen, video_screen, weather_screen]); }
 
 function toggleMusicForm() {
     form_music.classList.toggle('active');
@@ -183,7 +181,7 @@ function turnOnOff() {
             left_button.style.opacity = 0;
         }
 
-        isActive("", [menu_screen, calculator, alarm_screen, music_screen, weather_screen]);
+        isActive("", [config_screen, menu_screen, calculator, alarm_screen, music_screen, weather_screen]);
 
         setTimeout(() => { calc.processClearOperator(); game.resetAll(); }, 500);
     }, 1000);
@@ -206,25 +204,20 @@ function setPhoneBackground() {
 }
 
 function rightArrowAction() {
-    if (calculator.classList.contains('active'))
-        calculator.classList.remove('active');
-    else if (alarm_screen.classList.contains('active'))
-        alarm_screen.classList.remove('active');
-    else if (music_screen.classList.contains('active'))
-        music_screen.classList.remove('active');
-    else if (weather_result_container.classList.contains('active')) {
+    if (weather_result_container.classList.contains('active')) {
         weather_result_container.classList.remove('active');
         weather_search_container.classList.remove('inactive');
-    }
-
-    if (!menu_screen.classList.contains('active')) {
+    } else if (!weather_search_container.classList.contains('inactive')) {
+        weather_search_container.classList.add('inactive');
+        weather_screen.classList.remove('active');
+        menu_screen.classList.add('active');
+    } else if (!menu_screen.classList.contains('active'))
         menu_screen.classList.add('active');
 
-        isActive("", [phone_screen, music_screen, alarm_screen, calculator, weather_screen, video_screen, game_screen]);
-    }
+    isActive("", [config_screen, phone_screen, music_screen, alarm_screen, calculator, video_screen, game_screen]);
 }
 
-function alertMessage(title, message) {
+export function alertMessage(title, message) {
     var alert_container = document.querySelector("#alert"),
         alert_status = document.querySelector("#alert__status"),
         alert_message = document.querySelector("#alert__message");
@@ -242,26 +235,6 @@ function alertMessage(title, message) {
     setTimeout(() => alert_container.classList.remove('active'), 5000);
 }
 
-function changeInitialMessage() {
-    let user__message = document.querySelector('#user__message');
-
-    if (input_change_message.value == "") {
-        alertMessage("Erro!", "Digite uma mensagem!");
-        return;
-    } else if (input_change_message.value.length > 25) {
-        alertMessage("Erro!", "Mensagem muito longa!");
-        return;
-    } else if (input_change_message.value.length < 3) {
-        alertMessage("Erro!", "Mensagem muito curta!");
-        return;
-    } else {
-        user__message.innerHTML = input_change_message.value;
-        input_change_message.value = "";
-        alertMessage("Sucesso!", "Mensagem alterada com sucesso!");
-    }
-}
-
-
 // events
 function eventListeners() {
     setHour(); setInterval(setHour, 1000);
@@ -272,12 +245,12 @@ function eventListeners() {
     center_button.addEventListener('click', openMenu);
     right_button.addEventListener('click', rightArrowAction);
 
-    calculator_oppener.addEventListener('click', openCalculator);
-    music_oppener.addEventListener('click', openMusic);
-    alarm_oppener.addEventListener('click', openAlarm);
-    weather_oppener.addEventListener('click', openWeather);
-    video_oppener.addEventListener('click', openVideo);
-    game_oppener.addEventListener('click', openGame);
+    calculator_opener.addEventListener('click', openCalculator);
+    music_opener.addEventListener('click', openMusic);
+    alarm_opener.addEventListener('click', openAlarm);
+    weather_opener.addEventListener('click', openWeather);
+    video_opener.addEventListener('click', openVideo);
+    game_opener.addEventListener('click', openGame);
 
     bg_setter.addEventListener('click', setPhoneBackground);
 
@@ -289,10 +262,7 @@ function eventListeners() {
         console.log("music added");
     });
 
-    modal_oppener.addEventListener('click', openModal);
-    modal_close.addEventListener('click', closeModal);
-
-    input_change_message.addEventListener('keyup', (e) => { if (e.keyCode == 13) changeInitialMessage(); });
+    config_opener.addEventListener('click', openConfig);
 };
 
 document.addEventListener('DOMContentLoaded', function () {

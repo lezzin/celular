@@ -24,6 +24,23 @@ const loader = document.querySelector(".loader"),
 export class Weather {
     constructor() {
         this.api = "";
+        this.init();
+    }
+
+    init() {
+        automatic_location_button.addEventListener("click", () => {
+            weather.userLocation();
+        });
+
+        input_searcher.addEventListener("keypress", (e) => {
+            if (e.key == "Enter" && input_searcher.value != "")
+                weather.changeLocation(input_searcher.value);
+        });
+
+        button_searcher.addEventListener("click", () => {
+            if (input_searcher.value != "")
+                weather.changeLocation(input_searcher.value);
+        });
     }
 
     async getWeather() {
@@ -31,7 +48,6 @@ export class Weather {
 
         if (response.status == 200) {
             const data = await response.json();
-
             return data;
         } else {
             displayMessage("Cidade não encontrada");
@@ -42,7 +58,6 @@ export class Weather {
     changeLocation(city) {
         if (city) {
             this.api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`;
-
             this.displayWeather();
         } else displayMessage("Digite o nome de uma cidade");
     }
@@ -203,10 +218,9 @@ export class Weather {
                 break;
         }
 
-        let hour = date.getHours().toString().padStart(2, "0");
-        let minutes = date.getMinutes().toString().padStart(2, "0");
-
-        let hours = `${hour}:${minutes}`;
+        let hour = date.getHours().toString().padStart(2, "0"),
+            minutes = date.getMinutes().toString().padStart(2, "0"),
+            hours = `${hour}:${minutes}`;
 
         if (event == "date-time") return `${week}, ${day} de ${month}  ${hours}`;
         else return `${week}, ${day} de ${month}`;
@@ -214,21 +228,3 @@ export class Weather {
 }
 
 export const weather = new Weather();
-
-
-// events
-window.addEventListener("load", () => {
-    automatic_location_button.addEventListener("click", () => {
-        weather.userLocation();
-    });
-
-    input_searcher.addEventListener("keypress", (e) => {
-        if (e.key == "Enter" && input_searcher.value != "")
-            weather.changeLocation(input_searcher.value);
-    });
-
-    button_searcher.addEventListener("click", () => {
-        if (input_searcher.value != "")
-            weather.changeLocation(input_searcher.value);
-    });
-});

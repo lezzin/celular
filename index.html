@@ -119,7 +119,35 @@
 
             </div>
 
+            <!-- Configurações -->
+
+            <div class="config__screen">
+                <div class="container">
+                    <div class="top">
+                        <h1 class="title">Alterações no celular</h1>
+    
+                        <div class="alert" id="alert">
+                            <p id="alert__status"></p>
+                            <p id="alert__message"></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="input__container">
+                            <p>Alterar mensagem na tela inicial</p>
+                            <label for="config__name">
+                                <i class="fas fa-pencil-alt"></i>
+                            </label>
+                            <input type="text" placeholder="Digite aqui a mensagem" class="form__control"
+                                id="config__name">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- Menu - tela inicial -->
+
             <input type="file" id="file" accept="image/*" style="display: none;">
 
             <div class="menu__items">
@@ -190,6 +218,12 @@
                                 <i class="fas fa-gamepad"></i>
                             </a>
                             <span>#</span>
+                        </li>
+                        <li id="open__config">
+                            <a href="#">
+                                <i class="fas fa-gear"></i>
+                            </a>
+                            <span>Configurações</span>
                         </li>
                     </ul>
                 </nav>
@@ -504,37 +538,6 @@
                 <div class="icon circle" id="nav__center__button"></div>
                 <div class="icon arrow" id="nav__right__button">&#60</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Modal config -->
-
-    <div class="toggle__changes__modal" id="modal__toggler">
-        <i class="fas fa-gear"></i>
-    </div>
-
-    <div class="modal__config" id="modal">
-        <div class="container">
-            <button id="modal__closer">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <h1 class="title">Alterações no celular</h1>
-
-            <div class="alert" id="alert">
-                <p id="alert__status"></p>
-                <p id="alert__message"></p>
-            </div>
-
-            <div class="content">
-                <div class="input__container">
-                    <label for="config__name">
-                        <i class="fas fa-pencil-alt"></i>
-                    </label>
-                    <input type="text" placeholder="Alterar mensagem na tela inicial" class="form__control" id="config__name">
-                </div>
-            </div>
-
         </div>
     </div>
 

@@ -7,6 +7,21 @@ export class Calculator {
         this.previousOperationText = previousOperationText;
         this.currentOperationText = currentOperationText;
         this.currentOperation = "";
+
+        this.init();
+    }
+
+    init() {
+        calculator_keys.forEach(function (button) {
+            button.addEventListener("click", (e) => {
+                const value = e.target.innerText;
+
+                if (+value >= 0 || value === ".")
+                    calc.addDigit(value);
+                else
+                    calc.processOperation(value);
+            });
+        });
     }
 
     addDigit(digit) {
@@ -128,16 +143,3 @@ export class Calculator {
 }
 
 export const calc = new Calculator(previous_operation_text, current_operation_text);
-
-window.addEventListener("load", () => {
-    calculator_keys.forEach(function (button) {
-        button.addEventListener("click", (e) => {
-            const value = e.target.innerText;
-
-            if (+value >= 0 || value === ".")
-                calc.addDigit(value);
-            else
-                calc.processOperation(value);
-        });
-    });
-});

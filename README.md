@@ -22,14 +22,13 @@ Todo o design do celular foi criado por mim.
 
 
 #### Recursos que o celular possui:
+- Sistema de calculadora;
 - Sistema de alarme - com a possibilidade de escolher o horário em que irá tocar;
 - Sistema de clima utilizando API, que mostra a temperatura de acordo com a localização do usuário, ou, se preferir, pode digitar o nome da cidade;
 - Sistema de músicas totalmente personalizado;
+<br>
 - A hora é atualizada automaticamente de acordo com o horário do seu computador/celular com as funções `setInterval()` e `new Date()`;
 - Caso você esteja utilizando um notebook ou celular, a bateria também é atualizada automaticamente de acordo com a porcentagem da bateria do seu dispositivo, através das funções `setInterval()` e `navigator.getBattery()`.
-- Uma calculadora;
-- Jogo da velha;
-- Um "aplicativo" simples que contém a tag video;
 
 <br>
 

@@ -1,8 +1,11 @@
+@import '../../css/variables.css';
+
 .calculator {
     background: #000;
     transition: all .3s ease-out;
     opacity: 0;
     pointer-events: none;
+    z-index: var(--zindex-5);
 
     &.active {
         opacity: 1;

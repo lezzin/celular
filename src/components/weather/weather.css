@@ -1,3 +1,4 @@
+@import '../../css/variables.css';
 .weather {
   position: absolute;
   top: 0;
@@ -11,6 +12,7 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease-out;
+  z-index: var(--zindex-5);
 }
 .weather.active {
   opacity: 1;

@@ -2,6 +2,7 @@
 
 @import url('../components/phone/phone.css');
 @import url('../components/initial_screen/initial_screen.css');
+@import url('../components/config/config.css');
 @import url('../components/alarm/alarm.css');
 @import url('../components/calculator/calculator.css');
 @import url('../components/video/video.css');

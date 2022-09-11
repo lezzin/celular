@@ -1,3 +1,4 @@
+@import '../../css/variables.css';
 body {
   background-color: #f5f5f5;
   display: flex;
@@ -23,7 +24,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #000;
-  z-index: 6;
+  z-index: var(--zindex-2);
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -75,7 +76,7 @@ body {
   transform: translateX(-50%);
   width: 100%;
   height: 20px;
-  z-index: 10;
+  z-index: var(--zindex-1);
 }
 .phone .camera::after, .phone .camera::before {
   content: "";
@@ -108,7 +109,7 @@ body {
   padding: 0.4rem 0.6rem;
   background-color: #111;
   border-radius: 4px;
-  z-index: 10;
+  z-index: var(--zindex-1);
 }
 .phone .volume__icon i {
   color: #fff;
@@ -121,7 +122,7 @@ body {
 }
 .phone .side__button {
   position: absolute;
-  z-index: 2;
+  z-index: var(--zindex-1);
   top: 35%;
   right: -3px;
   background-color: #c91111;
@@ -137,7 +138,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  z-index: 2;
+  z-index: var(--zindex-1);
 }
 .phone .volume__buttons .side__button {
   background-color: #c91111;
@@ -170,7 +171,7 @@ body {
 }
 .phone .container .top,
 .phone .container .bottom {
-  z-index: 100;
+  z-index: var(--zindex-1);
   width: 100%;
   display: flex;
   align-items: center;
@@ -261,7 +262,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: var(--zindex-1);
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease-out;
@@ -334,152 +335,4 @@ body {
   40%, 80% {
     transform: translateX(1px);
   }
-}
-.toggle__changes__modal {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  border-radius: 50%;
-  background-color: #111;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem;
-  transition: all 0.3s ease-out;
-  cursor: pointer;
-}
-.toggle__changes__modal i {
-  color: #fff;
-  font-size: 1.4rem;
-}
-.toggle__changes__modal i:hover {
-  color: #ccc;
-}
-
-.modal__config {
-  position: absolute;
-  top: -100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-out;
-}
-.modal__config.active {
-  opacity: 1;
-  pointer-events: all;
-  top: 50%;
-}
-.modal__config .container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 5px;
-  height: 50%;
-  background-color: #111;
-}
-.modal__config .container .title {
-  font-size: 2rem;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 1rem;
-}
-.modal__config .container #modal__closer {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.modal__config .container #modal__closer:hover {
-  color: #c91111;
-}
-.modal__config .container .alert {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 0.2rem 1rem;
-  margin: 1rem 0;
-  width: 80%;
-  border-radius: 5px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-out;
-  overflow: hidden;
-}
-.modal__config .container .alert #alert__status,
-.modal__config .container .alert #alert__message {
-  color: #fff;
-}
-.modal__config .container .alert #alert__status {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.modal__config .container .alert #alert__message {
-  font-size: 1rem;
-  font-weight: 300;
-}
-.modal__config .container .alert.success {
-  background-color: #52eb52;
-  border: inset 3px solid #2d5f2d;
-}
-.modal__config .container .alert.error {
-  background-color: #c91111;
-  border: inset 3px solid #5f2d2d;
-}
-.modal__config .container .alert.active {
-  opacity: 1;
-  pointer-events: all;
-}
-.modal__config .container .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-.modal__config .container .content .input__container {
-  position: relative;
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-.modal__config .container .content .input__container label {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  color: #fff;
-  font-size: 1rem;
-  padding-left: 0.5rem;
-}
-.modal__config .container .content .input__container input {
-  width: 100%;
-  padding: 6px 10px 6px 2rem;
-  background-color: #222;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  border-radius: 5px;
 }/*# sourceMappingURL=phone.css.map */

@@ -1,3 +1,5 @@
+@import '../../css/variables.css';
+
 .menu__items {
     position: absolute;
     display: flex;
@@ -12,7 +14,7 @@
     transition: all .3s ease-out;
     pointer-events: none;
     border-radius: 40px;
-    z-index: 5;
+    z-index: var(--zindex-5);
 
     &.active {
         opacity: 1;
