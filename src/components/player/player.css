@@ -1,0 +1,384 @@
+.player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+}
+.player .playlist {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 85%;
+  background-color: #000;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+.player .playlist.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.player .playlist .playlist__title {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+}
+.player .playlist .playlist__title h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+.player .playlist .playlist__title button {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  color: #c92d11;
+  transform: rotate(45deg);
+}
+.player .playlist .playlist__title button:hover {
+  color: #9b220d;
+}
+.player .playlist .playlist__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.player .playlist .playlist__list #music__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.player .playlist .playlist__list #music__list .music {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 100;
+  margin: 0.8rem 0;
+}
+.player .playlist .playlist__list #music__list .music .music__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.player .playlist .playlist__list #music__list .music .music__item img {
+  border-radius: 50%;
+}
+.player .playlist .playlist__list #music__list .music .music__item .music__info {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+}
+.player .playlist .playlist__list #music__list .music .music__item .music__info h3 {
+  text-align: right;
+  width: 90%;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.player .playlist .playlist__list #music__list .music .music__item .music__info .music__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  height: 10%;
+  padding: 0;
+  font-size: 0.7rem;
+}
+.player .playlist .playlist__list #music__list .music .music__item .music__info .music__nav i {
+  color: #ccc;
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+.player .playlist .playlist__list #music__list .music .music__item .music__info .music__nav i:hover {
+  color: #fff;
+}
+.player .form {
+  position: absolute;
+  background: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 86%;
+  flex-direction: column;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+.player .form.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.player .form #music__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.player .form #music__form .title {
+  font-size: 1.3rem;
+  color: #fff;
+}
+.player .form #music__form .input__group {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.player .form #music__form .input__group input {
+  margin: 0.2rem;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 3px;
+  background: #111;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+.player .form #music__form .input__group input:hover {
+  background: #222;
+}
+.player .form #music__form .input__group input:hover::-moz-placeholder {
+  color: #aaa;
+}
+.player .form #music__form .input__group input:hover:-ms-input-placeholder {
+  color: #aaa;
+}
+.player .form #music__form .input__group input:hover::placeholder {
+  color: #aaa;
+}
+.player .form #music__form .input__group input::-moz-placeholder {
+  color: #ccc;
+}
+.player .form #music__form .input__group input:-ms-input-placeholder {
+  color: #ccc;
+}
+.player .form #music__form .input__group input::placeholder {
+  color: #ccc;
+}
+.player .form #music__form #btn__add__music {
+  padding: 5px;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  background: #111;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in;
+  margin-top: 1.2rem;
+  cursor: pointer;
+  color: #0f8a2b;
+}
+.player .form #music__form #btn__add__music:hover {
+  background: #080800;
+  color: #053b0e;
+}
+.player.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.player .title__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #000;
+  z-index: 4;
+}
+.player .title__container .title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+.player .title__container button {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  color: #fff;
+}
+.player .title__container button:hover {
+  color: #777;
+}
+.player .player__top {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+.player .player__top .music__image {
+  width: 3em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+}
+.player .player__top .music__image img {
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.player .player__top .info {
+  text-align: center;
+  width: 70%;
+  height: 30%;
+  word-wrap: break-word;
+}
+.player .player__top .info #artist__name,
+.player .player__top .info #music__name {
+  font-weight: 100;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+.player .player__top .info #music__name {
+  font-size: 1rem;
+}
+.player .player__top .info #artist__name {
+  font-size: 0.8rem;
+}
+.player .player__top .player__progress {
+  width: 100%;
+  height: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 1rem;
+  color: #fff;
+  margin-top: 2rem;
+}
+.player .player__top .player__progress .progress__bar {
+  width: 70%;
+  height: 100%;
+  background: #111;
+  border-radius: 10px;
+  position: relative;
+}
+.player .player__top .player__progress .progress__bar #progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-appearance: none;
+  width: 100%;
+  border-radius: 10px;
+  background: transparent;
+}
+.player .player__top .player__progress .progress__bar #progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.player .player__top .player__progress .progress__bar .progress__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #0f8a2b;
+  border-radius: 10px;
+}
+.player .player__top .player__progress .music__time {
+  font-size: 0.6rem;
+}
+.player .player__controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.player .player__controls .player__button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  color: #fff;
+  font-size: 1rem;
+  margin: 0.4rem;
+}
+.player .player__controls .player__button:hover {
+  color: #777;
+}
+.player .player__controls .player__button#play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  background: #111;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding: 0;
+}
+.player .player__controls .player__button#repeat {
+  margin-left: 2rem;
+}
+.player .player__controls .player__button#repeat:hover {
+  color: #777;
+}
+.player .player__controls .player__button#repeat i.active {
+  color: #0f8a2b;
+}
+.player .player__controls .player__button#shuffle {
+  margin-right: 2rem;
+}
+.player .player__controls .player__button#shuffle:hover {
+  color: #777;
+}
+.player .player__controls .player__button#shuffle i.active {
+  color: #0f8a2b;
+}/*# sourceMappingURL=player.css.map */

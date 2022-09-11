@@ -1,0 +1,110 @@
+.calculator {
+    background: #000;
+    transition: all .3s ease-out;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .display {
+        width: 100%;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 20px;
+        position: relative;
+        word-wrap: break-word;
+        color: #333;
+
+        #previous__operation {
+            font-size: 1.5rem;
+        }
+
+        #current__operation {
+            font-size: 2.5rem;
+        }
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        animation: fadeIn .5s forwards;
+
+        .buttons__row {
+            width: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .button {
+                margin: .1rem;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: 700;
+                background-color: #111;
+                color: #fff;
+                cursor: pointer;
+
+                &:active {
+                    background-color: #333;
+
+                    span {
+                        transition: all .2s ease-in-out;
+                        transform: scale(0.85);
+                    }
+                }
+
+                &.button--function,
+                &.button--operator {
+                    background-color: #111;
+                    color: #086317;
+
+                    &:active {
+                        background-color: #333;
+
+                        span {
+                            transition: all .2s ease-in-out;
+                            transform: scale(0.9);
+                        }
+                    }
+                }
+
+                &.button--clear {
+                    color: #b42222
+                }
+
+                &.button--equal {
+                    color: #000;
+                    background-color: #086317;
+
+                    &:active {
+                        background-color: #0b8620;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

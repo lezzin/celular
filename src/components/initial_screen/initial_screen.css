@@ -1,0 +1,95 @@
+.initial__screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+.initial__screen.inactive {
+  opacity: 0;
+  pointer-events: all;
+}
+.initial__screen .top,
+.initial__screen .bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.initial__screen .top {
+  height: 50%;
+}
+.initial__screen .top .top__content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.initial__screen .top .top__content #hour__initial__screen,
+.initial__screen .top .top__content #user__message,
+.initial__screen .top .top__content #data__initial__screen {
+  color: #fff;
+}
+.initial__screen .top .top__content #hour__initial__screen {
+  font-size: 4rem;
+}
+.initial__screen .top .top__content #date__initial__screen {
+  font-size: 0.6rem;
+}
+.initial__screen .top .top__content #user__message {
+  position: relative;
+  width: 100%;
+  font-size: 0.8rem;
+  -webkit-animation: move 10s infinite linear;
+          animation: move 10s infinite linear;
+}
+.initial__screen .top .top__content .initial__notifications {
+  display: flex;
+  justify-content: center;
+}
+.initial__screen .top .top__content .initial__notifications li {
+  list-style: none;
+  margin: 0 2px;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.initial__screen .bottom {
+  height: 50%;
+}
+.initial__screen .bottom .bottom__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 85%;
+  height: 90%;
+}
+.initial__screen .bottom .bottom__content i {
+  cursor: pointer;
+}
+
+@-webkit-keyframes move {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}/*# sourceMappingURL=initial_screen.css.map */

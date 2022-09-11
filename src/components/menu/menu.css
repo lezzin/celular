@@ -1,0 +1,86 @@
+.menu__items {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+  border-radius: 40px;
+  z-index: 5;
+}
+.menu__items.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.menu__items .creator,
+.menu__items .apps {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.menu__items .creator p {
+  color: #ccc;
+  font-size: 0.6rem;
+  font-weight: 100;
+}
+.menu__items .apps {
+  margin-top: 2rem;
+}
+.menu__items .apps ul {
+  width: 90%;
+  height: 55%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  align-content: center;
+  grid-gap: 0.4rem;
+  font-size: 2rem;
+}
+.menu__items .apps ul li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  list-style: none;
+  padding: 6px;
+  margin: 0.4rem 0;
+  transition: all 0.2s ease-in;
+  color: #fff;
+}
+.menu__items .apps ul li:hover {
+  background: #222;
+}
+.menu__items .apps ul li:hover a,
+.menu__items .apps ul li:hover span {
+  color: #777;
+}
+.menu__items .apps ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.menu__items .apps ul li a,
+.menu__items .apps ul li span {
+  transition: all 0.2s ease-in;
+}
+.menu__items .apps ul li span {
+  color: #ccc;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+}/*# sourceMappingURL=menu.css.map */
