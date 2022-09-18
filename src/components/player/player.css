@@ -117,6 +117,7 @@
   height: 10%;
   padding: 0;
   font-size: 0.7rem;
+  z-index: var(--zindex-2);
 }
 .player .playlist .playlist__list #music__list .music .music__item .music__info .music__nav i {
   color: #ccc;

@@ -1,9 +1,9 @@
-import * as config from '../components/config/config.js';
-import { calc, Calculator } from '../components/calculator/calculator.js';
-import { music_player, Player } from '../components/player/player.js';
-import { weather, Weather } from '../components/weather/weather.js';
-import { game, Game } from '../components/game/game.js';
-import * as alarm from '../components/alarm/alarm.js';
+import * as configApp from '../components/config/config.js';
+import * as calculatorApp from '../components/calculator/calculator.js';
+import * as musicApp from '../components/player/player.js';
+import * as weatherApp from '../components/weather/weather.js';
+import * as gameApp from '../components/game/game.js';
+import * as alarmApp from '../components/alarm/alarm.js';
 
 export function displayMessage(text) {
     var message = document.querySelector('#phone__notify'),
@@ -25,6 +25,8 @@ const loader = document.querySelector('.loader'),
     calculator = document.querySelector('.calculator'),
 
     music_screen = document.querySelector('.player'),
+    playlist = document.querySelector('.playlist'),
+
     menu_screen = document.querySelector('.menu__items'),
     alarm_screen = document.querySelector('.alarm'),
     phone_screen = document.querySelector('.container'),
@@ -73,7 +75,7 @@ function setHour() {
 
     hour_display.innerHTML = `${hour}:${minutes}`;
     initial_hour_display.innerHTML = `${hour}:${minutes}`;
-    initial_date_display.innerHTML = weather.dateNow("date");
+    initial_date_display.innerHTML = weatherApp.weather.dateNow("date");
 }
 
 function getBattery() {
@@ -148,18 +150,18 @@ function openMenu() {
     if (!initial__screen.classList.contains('inactive')) initial__screen.classList.add('inactive');
     if (right_button.style.opacity == 0) right_button.style.opacity = 1;
     if (left_button.style.opacity == 0) left_button.style.opacity = 1;
-    isActive(menu_screen, [config_screen, phone_screen, music_screen, alarm_screen, calculator, weather_screen, weather_search_container, weather_result_container, video_screen, game_screen]);
+    isActive(menu_screen, [config_screen, phone_screen, music_screen, playlist, form_music, alarm_screen, calculator, weather_screen, weather_search_container, weather_result_container, video_screen, game_screen]);
 
-    game.resetAll();
+    gameApp.game.resetAll();
 }
 
-export const openAlarm = () => { isActive(alarm_screen, [config_screen, menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
+export const openAlarm = () => { isActive(alarm_screen, [config_screen, menu_screen, music_screen, playlist, form_music, calculator, alarm_screen, video_screen, weather_screen]); }
 export const openMusic = () => { isActive(music_screen, [config_screen, menu_screen, calculator, alarm_screen, video_screen, weather_screen]); }
-const openVideo = () => { isActive(video_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, weather_screen]); }
-const openCalculator = () => { isActive(calculator, [config_screen, phone_screen, music_screen, alarm_screen, menu_screen, weather_screen, video_screen, game_screen]); }
-const openWeather = () => { isActive([weather_screen, weather_search_container], [config_screen, menu_screen, calculator, alarm_screen, music_screen, video_screen]); }
-const openGame = () => { isActive(game_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, video_screen, weather_screen]); }
-const openConfig = () => { isActive(config_screen, [menu_screen, calculator, alarm_screen, music_screen, video_screen, weather_screen]); }
+const openVideo = () => { isActive(video_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, playlist, form_music, weather_screen]); }
+const openCalculator = () => { isActive(calculator, [config_screen, phone_screen, music_screen, playlist, form_music, alarm_screen, menu_screen, weather_screen, video_screen, game_screen]); }
+const openWeather = () => { isActive([weather_screen, weather_search_container], [config_screen, menu_screen, calculator, alarm_screen, music_screen, playlist, form_music, video_screen]); }
+const openGame = () => { isActive(game_screen, [config_screen, menu_screen, calculator, alarm_screen, music_screen, playlist, form_music, video_screen, weather_screen]); }
+const openConfig = () => { isActive(config_screen, [menu_screen, calculator, alarm_screen, music_screen, playlist, form_music, video_screen, weather_screen]); }
 
 function toggleMusicForm() {
     form_music.classList.toggle('active');
@@ -181,24 +183,20 @@ function turnOnOff() {
             left_button.style.opacity = 0;
         }
 
-        isActive("", [config_screen, menu_screen, calculator, alarm_screen, music_screen, weather_screen]);
+        isActive("", [config_screen, menu_screen, calculator, alarm_screen, music_screen, playlist, form_music, weather_screen]);
 
-        setTimeout(() => { calc.processClearOperator(); game.resetAll(); }, 500);
+        setTimeout(() => { calculatorApp.calc.processClearOperator(); gameApp.game.resetAll(); }, 500);
     }, 1000);
 }
 
 function setPhoneBackground() {
+    var input = document.querySelector("#input__change__bg");
     bg_setter.addEventListener("click", () => input.click());
 
-    var input = document.querySelector("#file");
     input.addEventListener("change", function () {
         var reader = new FileReader();
 
-        reader.onload = function () {
-            var result = reader.result;
-            document.querySelector(".black__screen").style.background = "url(" + result + ") no-repeat center center/cover";
-        }
-
+        reader.onload = () => menu_screen.style.background = "url(" + reader.result + ") no-repeat center center/cover";
         reader.readAsDataURL(input.files[0]);
     });
 }
@@ -214,7 +212,7 @@ function rightArrowAction() {
     } else if (!menu_screen.classList.contains('active'))
         menu_screen.classList.add('active');
 
-    isActive("", [config_screen, phone_screen, music_screen, alarm_screen, calculator, video_screen, game_screen]);
+    isActive("", [config_screen, phone_screen, music_screen, playlist, form_music, alarm_screen, calculator, video_screen, game_screen]);
 }
 
 export function alertMessage(title, message) {
@@ -258,8 +256,7 @@ function eventListeners() {
 
     form_music.addEventListener('submit', (e) => {
         e.preventDefault();
-        music_player.addMusic();
-        console.log("music added");
+        musicApp.music_player.addMusic();
     });
 
     config_opener.addEventListener('click', openConfig);

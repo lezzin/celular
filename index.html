@@ -141,6 +141,12 @@
                             <input type="text" placeholder="Digite aqui a mensagem" class="form__control"
                                 id="config__name">
                         </div>
+                        <div class="input__container">
+                            <p>Alterar mensagem na tela inicial</p>
+                            <button id="remove__bg__btn">
+                                Remover background da tela inicial
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -148,7 +154,7 @@
 
             <!-- Menu - tela inicial -->
 
-            <input type="file" id="file" accept="image/*" style="display: none;">
+            <input type="file" id="input__change__bg" accept="image/*" style="display: none;">
 
             <div class="menu__items">
                 <nav class="apps">
@@ -479,7 +485,7 @@
 
                 <div class="player__top">
                     <div class="music__image">
-                        <img src="./src/img/robo.png" alt="Imagem da música" id="music__image" width="96" height="96">
+                        <img src="./src/img/robo.png" alt="Imagem da música" width="96" height="96">
                     </div>
                     <div class="info">
                         <p id="music__name"></p>

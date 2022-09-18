@@ -111,118 +111,43 @@ export class Weather {
     }
 
     translateWeather(description) {
-        switch (description) {
-            case "broken clouds":
-                description = "Nuvens quebradas";
-                break;
-            case "clear sky":
-                description = "Céu limpo";
-                break;
-            case "few clouds":
-                description = "Poucas nuvens";
-                break;
-            case "light rain":
-                description = "Chuva leve";
-                break;
-            case "moderate rain":
-                description = "Chuva moderada";
-                break;
-            case "overcast clouds":
-                description = "Nuvens encobertas";
-                break;
-            case "scattered clouds":
-                description = "Nuvens dispersas";
-                break;
-            case "shower rain":
-                description = "Chuva de banho";
-                break;
-            case "thunderstorm":
-                description = "Trovoada";
-                break;
-            case "mist":
-                description = "Neblina";
-                break;
-            default:
-                description = "Não foi possível traduzir";
-        }
+        let translatedDescription,
+            map = {
+                "broken clouds": "Nuvens quebradas",
+                "clear sky": "Céu limpo",
+                "few clouds": "Poucas nuvens",
+                "light rain": "Chuva leve",
+                "moderate rain": "Chuva moderada",
+                "overcast clouds": "Nuvens encobertas",
+                "scattered clouds": "Nuvens dispersas",
+                "shower rain": "Chuva de banho",
+                "sky is clear": "Céu limpo",
+                "thunderstorm": "Trovoada",
+                "thunderstorm with heavy rain": "Trovoada com chuva forte",
+                "thunderstorm with light rain": "Trovoada com chuva leve",
+                "thunderstorm with rain": "Trovoada com chuva",
+                "very heavy rain": "Chuva muito forte"
+            };
 
-        return description;
+        translatedDescription = map[description] ?? "Não foi possível traduzir a descrição";
+        return translatedDescription;
     }
 
     dateNow(event) {
         let date = new Date(),
+
             week = date.getDay(),
             day = date.getDate(),
-            month = date.getMonth();
+            month = date.getMonth(),
 
-        switch (week) {
-            case 0:
-                week = "dom.";
-                break;
-            case 1:
-                week = "seg.";
-                break;
-            case 2:
-                week = "ter.";
-                break;
-            case 3:
-                week = "quar.";
-                break;
-            case 4:
-                week = "quin.";
-                break;
-            case 5:
-                week = "sex.";
-                break;
-            case 6:
-                week = "sab.";
-                break;
-        }
-
-        switch (month) {
-            case 0:
-                month = "janeiro";
-                break;
-            case 1:
-                month = "fevereiro";
-                break;
-            case 2:
-                month = "março";
-                break;
-            case 3:
-                month = "abril";
-                break;
-            case 4:
-                month = "maio";
-                break;
-            case 5:
-                month = "junho";
-                break;
-            case 6:
-                month = "julho";
-                break;
-            case 7:
-                month = "agosto";
-                break;
-            case 8:
-                month = "setembro";
-                break;
-            case 9:
-                month = "outubro";
-                break;
-            case 10:
-                month = "novembro";
-                break;
-            case 11:
-                month = "dezembro";
-                break;
-        }
-
-        let hour = date.getHours().toString().padStart(2, "0"),
+            hour = date.getHours().toString().padStart(2, "0"),
             minutes = date.getMinutes().toString().padStart(2, "0"),
-            hours = `${hour}:${minutes}`;
+            hours = `${hour}:${minutes}`,
 
-        if (event == "date-time") return `${week}, ${day} de ${month}  ${hours}`;
+            translatedWeek = ["dom.", "seg.", "ter.", "qua.", "qui.", "sex.", "sab."],
+            translatedMonth = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+        if (event == "date-time") return `${translatedWeek[week]}, ${day} de ${translatedMonth[month]} ${hours}`;
         else return `${week}, ${day} de ${month}`;
     }
 }

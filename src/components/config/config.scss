@@ -56,7 +56,7 @@
                 transition: all .3s ease-out;
                 overflow: hidden;
                 text-align: center;
-                margin: .2rem;
+                margin: .5rem;
 
                 #alert__status,
                 #alert__message {
@@ -122,15 +122,29 @@
                     padding-left: .5rem;
                 }
 
-                input {
+                input,
+                button {
                     width: 100%;
-                    padding: 6px 10px 6px 2rem;
                     background-color: #222;
                     border: none;
                     color: #fff;
                     font-size: 1rem;
                     outline: none;
                     border-radius: 5px;
+                }
+
+                input {
+                    padding: 6px 10px 6px 2rem;
+                }
+
+                button {
+                    padding: 6px 10px;
+                    cursor: pointer;
+                    transition: all .3s ease-out;
+
+                    &:hover {
+                        background-color: #333;
+                    }
                 }
             }
         }

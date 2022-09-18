@@ -15,8 +15,6 @@ const play_btn = document.querySelector("#play i"),
     turn_down_volume = document.querySelector("#volume__up"),
     turn_up_volume = document.querySelector("#volume__down"),
 
-    remove_music_btn = document.querySelectorAll('.remove__music'),
-
     current_time = document.querySelector("#current__time"),
     duration = document.querySelector("#music__duration"),
     progress = document.querySelector("#progress"),
@@ -27,9 +25,10 @@ const play_btn = document.querySelector("#play i"),
 
     name_text = document.querySelector("#music__name"),
     artist_text = document.querySelector("#artist__name"),
-    image_text = document.querySelector("#music__image"),
+    image_text = document.querySelector(".music__image"),
 
-    music_list = document.querySelector("#music__list"),
+    playlist_container = document.querySelector("#music__list"),
+    playlist = document.querySelector(".playlist"),
 
     sounds = [
         {
@@ -61,12 +60,14 @@ export class Player {
     }
 
     init() {
-        this.addEventListeners();
         this.update();
         this.showMusics();
+        this.addEventListeners();
     }
 
     addEventListeners() {
+        const remove_music_btn = document.querySelectorAll(".remove__music");
+
         this.audio.addEventListener("ended", () => {
             if (this.repeat) {
                 this.audio.currentTime = 0;
@@ -82,8 +83,6 @@ export class Player {
 
         remove_music_btn.forEach(function (btn) {
             btn.addEventListener('click', function () {
-                alert("Botão clicado!");
-
                 let id = this.getAttribute('data-id');
                 music_player.removeSong(id);
             });
@@ -151,23 +150,16 @@ export class Player {
         play_btn.setAttribute("title", "Iniciar");
     }
 
-    playPause() {
-        if (this.playing) {
-            this.pause();
-        } else {
-            this.play();
-        }
-    }
+    playPause() { this.playing ? this.pause() : this.play(); }
 
     next() {
         if (this.shuffle) {
             this.index = Math.floor(Math.random() * sounds.length);
         } else {
             this.index++;
-            if (this.index >= sounds.length) {
-                this.index = 0;
-            }
+            if (this.index >= sounds.length) this.index = 0;
         }
+
         this.audio.src = sounds[this.index].path;
         this.play();
     }
@@ -177,9 +169,7 @@ export class Player {
             this.index = Math.floor(Math.random() * sounds.length);
         } else {
             this.index--;
-            if (this.index < 0) {
-                this.index = sounds.length - 1;
-            }
+            if (this.index < 0) this.index = sounds.length - 1;
         }
         this.audio.src = sounds[this.index].path;
         this.play();
@@ -202,14 +192,14 @@ export class Player {
     }
 
     update() {
-        if (music_list.classList.contains("empty")) {
-            music_list.classList.remove("empty");
+        if (playlist_container.classList.contains("empty")) {
+            playlist_container.classList.remove("empty");
             image_text.style.display = "block";
         }
 
         name_text.textContent = sounds[this.index].music_name;
         artist_text.textContent = `Artista: ${sounds[this.index].artist}`;
-        image_text.src = sounds[this.index].image;
+        image_text.querySelector('img').src = sounds[this.index].image;
     }
 
     volumeUp() {
@@ -257,8 +247,8 @@ export class Player {
         progress.value = (this.audio.currentTime / this.audio.duration) * 100;
         progress_fill.style.width = `${(this.audio.currentTime / this.audio.duration) * 100}%`;
 
-        current_time.innerHTML = this.formatTime(this.audio.currentTime);
-        duration.innerHTML = this.formatTime(this.audio.duration);
+        current_time.textContent = this.formatTime(this.audio.currentTime);
+        duration.textContent = this.formatTime(this.audio.duration);
     }
 
     addMusic() {
@@ -266,6 +256,10 @@ export class Player {
         let artist = document.querySelector("#music__artist__input");
         let image = document.querySelector("#music__image__input");
         let path = document.querySelector("#music__path__input");
+
+        if (music.value == "" || artist.value == "" || image.value == "" || path.value == "") {
+            displayMessage("Preencha todos os campos!"); return;
+        }
 
         sounds.push({
             music_name: music.value,
@@ -289,40 +283,34 @@ export class Player {
         sounds.splice(index, 1);
 
         let element = document.getElementById(index);
-        music_list.removeChild(element);
+        playlist_container.removeChild(element);
 
-        if (music_list.childNodes.length == 0) {
-            music_list.classList.add("empty");
-            music_list.innerHTML = `<li>Nenhuma música adicionada</li>`;
+        if (playlist_container.childNodes.length == 0) {
+            playlist_container.classList.add("empty");
+            playlist_container.innerHTML = `<li>Nenhuma música adicionada</li>`;
 
             name_text.textContent = "Nenhuma música encontrada";
             artist_text.textContent = "";
             image_text.style.display = "none";
+            duration.textContent = "0:00";
+            current_time.textContent = "0:00";
+            progress.value = 0;
             this.audio.src = "";
-        } else {
+        } else
             image_text.style.display = "block";
-        }
     }
 
-    displayPlaylist() {
-        let playlist = document.querySelector(".playlist");
-
-        playlist.classList.add("active");
-    }
-
-    hidePlaylist() {
-        let playlist = document.querySelector(".playlist");
-
-        playlist.classList.remove("active");
-    }
+    displayPlaylist() { playlist.classList.add("active"); }
+    hidePlaylist() { playlist.classList.remove("active"); }
 
     showMusics() {
-        if (music_list.classList.contains("empty"))
-            music_list.innerHTML = "";
+        playlist_container.innerHTML = "";
+
+        if (playlist_container.classList.contains("empty")) return;
         else {
-            music_list.innerHTML = "";
             sounds.forEach((sound, index) => {
                 let music = document.createElement("li");
+
                 music.id = index;
                 music.classList.add("music");
 
@@ -338,7 +326,7 @@ export class Player {
                     </div>
                 </div>`;
 
-                music_list.appendChild(music);
+                playlist_container.appendChild(music);
             });
         }
     }

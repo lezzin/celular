@@ -53,7 +53,7 @@
   transition: all 0.3s ease-out;
   overflow: hidden;
   text-align: center;
-  margin: 0.2rem;
+  margin: 0.5rem;
 }
 .config__screen .container .top .alert #alert__status,
 .config__screen .container .top .alert #alert__message {
@@ -109,13 +109,24 @@
   font-size: 1rem;
   padding-left: 0.5rem;
 }
-.config__screen .container .content .input__container input {
+.config__screen .container .content .input__container input,
+.config__screen .container .content .input__container button {
   width: 100%;
-  padding: 6px 10px 6px 2rem;
   background-color: #222;
   border: none;
   color: #fff;
   font-size: 1rem;
   outline: none;
   border-radius: 5px;
+}
+.config__screen .container .content .input__container input {
+  padding: 6px 10px 6px 2rem;
+}
+.config__screen .container .content .input__container button {
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.config__screen .container .content .input__container button:hover {
+  background-color: #333;
 }/*# sourceMappingURL=config.css.map */
