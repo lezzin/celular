@@ -22,6 +22,19 @@ export class Calculator {
                     calc.processOperation(value);
             });
         });
+
+        // evento touchstart
+        calculatorKeys.forEach(function (button) {
+            button.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                const value = e.target.innerText;
+
+                if (+value >= 0 || value === ".")
+                    calc.addDigit(value);
+                else
+                    calc.processOperation(value);
+            });
+        });
     }
 
     addDigit(digit) {

@@ -82,6 +82,43 @@ export class Game {
             this.setPlayerName(player2, player2Name.textContent);
             this.updateGame();
         });
+
+        // eventos touchstart
+        cells.forEach(cell => {
+            cell.addEventListener('touchstart', e => {
+                e.preventDefault();
+                this.cellClickHandler(e);
+            });
+        });
+
+        restartBtn.addEventListener('touchstart', e => {
+            e.preventDefault();
+            this.restartGame();
+        });
+
+        confirmChangeP1.addEventListener('touchstart', e => {
+            e.preventDefault();
+
+            if (player1Name.textContent === '' || player1Name.textContent === player2.name) {
+                displayMessage('O nome do jogador 1 não pode ser vazio ou igual ao jogador 2');
+                return;
+            }
+
+            this.setPlayerName(player1, player1Name.textContent);
+            this.updateGame();
+        });
+
+        confirmChangeP2.addEventListener('touchstart', e => {
+            e.preventDefault();
+
+            if (player2Name.textContent === '' || player2Name.textContent === player1.name) {
+                displayMessage('O nome do jogador 2 não pode ser vazio ou igual ao jogador 1');
+                return;
+            }
+
+            this.setPlayerName(player2, player2Name.textContent);
+            this.updateGame();
+        });
     }
 
     cellClickHandler = (e) => {
@@ -148,7 +185,7 @@ export class Game {
 
         displayMessage(`O nome do jogador ${player === player1 ? 1 : 2} foi alterado para ${name}!`);
     }
-    
+
     resetAll() {
         player1.score = 0;
         player2.score = 0;

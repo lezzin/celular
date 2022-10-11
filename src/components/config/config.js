@@ -37,3 +37,8 @@ function removeBackground() {
 
 inputChangeMessage.addEventListener('keyup', e => { if (e.keyCode == 13) changeInitialMessage(); });
 removeBackgroundBtn.addEventListener('click', removeBackground);
+
+removeBackgroundBtn.addEventListener('touchstart', e => {
+    e.preventDefault();
+    removeBackground();
+});

@@ -37,7 +37,7 @@ const playBtn = document.querySelector("#play i"),
             music_name: "Rap do Johan Liebert",
             artist: "Enygma",
             image: musicPath + "img_sound01.webp",
-            path: musicPath + "sound01.mp3" 
+            path: musicPath + "sound01.mp3"
         },
     ];
 
@@ -117,6 +117,69 @@ export class Player {
             progressFill.style.width = `${(x / progressWidth) * 100}%`;
 
             if (music_player.audio.paused) music_player.playPause();
+        });
+
+        // eventos tochstart
+        remove_music_btn.forEach(function (btn) {
+            btn.addEventListener('touchstart', e => {
+                e.preventDefault();
+                let id = this.getAttribute('data-id');
+                music_player.removeSong(id);
+            });
+        });
+
+        notifyMusicIcon.addEventListener("touchstart", e => {
+            e.preventDefault();
+            openMusic();
+        });
+
+        hidePlaylistBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.hidePlaylist();
+        });
+
+        showPlaylistBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.displayPlaylist();
+        });
+
+        playBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.playPause();
+        });
+
+        nextBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.next();
+        });
+
+        previousBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.previous();
+        });
+
+        shuffleBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.isAleatory();
+        });
+
+        repeatBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.isRepeat();
+        });
+
+        turnDownVolume.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.volumeUp();
+
+            setTimeout(() => volumeDisplay.style.display = "none", 500);
+        });
+
+        turnUpVolume.addEventListener("touchstart", e => {
+            e.preventDefault();
+            music_player.volumeDown();
+
+            setTimeout(() => volumeDisplay.style.display = "none", 500);
         });
     }
 
@@ -241,6 +304,7 @@ export class Player {
 
     progressUpdate() {
         progress.value = (this.audio.currentTime / this.audio.duration) * 100;
+        progress.setAttribute("title", `${this.formatTime(this.audio.currentTime)}`);
         progressFill.style.width = `${(this.audio.currentTime / this.audio.duration) * 100}%`;
 
         currentTime.textContent = this.formatTime(this.audio.currentTime);

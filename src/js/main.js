@@ -418,6 +418,67 @@ function eventListeners() {
         musicApp.music_player.addMusic();
     });
 
+    // eventos touchstart
+    powerButton.addEventListener('touchstart', e => {
+        e.preventDefault();
+        turnOnOff();
+    });
+
+    centerButton.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openMenu();
+    });
+
+    rightButton.addEventListener('touchstart', e => {
+        e.preventDefault();
+        rightArrowAction();
+    });
+
+    calculatorOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openCalculator();
+    });
+
+    musicOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openMusic();
+    });
+
+    alarmOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openAlarm();
+    });
+
+    weatherOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openWeather();
+    });
+
+    videoOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openVideo();
+    });
+
+    gameOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openGame();
+    });
+
+    configOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openConfig();
+    });
+
+    calendarOpener.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openCalendar();
+    });
+
+    addMusicBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        toggleMusicForm();
+    });
+
     window.addEventListener("keydown", e => {
         if (e.code === "KeyF") flipPhone();
     });

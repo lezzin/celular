@@ -118,4 +118,31 @@ window.addEventListener('load', () => {
     });
 
     notifyNavAlarmIcon.addEventListener('click', openAlarm);
+
+    // eventos touchstart
+    setAlarmBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        const alarm = new Alarm(hourInput.value, minuteInput.value);
+
+        alarm.setAlarm();
+    });
+
+    stopAlarmBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        const alarm = new Alarm(hourInput.value, minuteInput.value);
+
+        alarm.stopAlarm();
+    });
+
+    resetAlarmBtn.addEventListener('touchstart', e => {
+        e.preventDefault();
+        const alarm = new Alarm(hourInput.value, minuteInput.value);
+
+        alarm.resetAlarm();
+    });
+
+    notifyNavAlarmIcon.addEventListener('touchstart', e => {
+        e.preventDefault();
+        openAlarm();
+    });
 });

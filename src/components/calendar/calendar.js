@@ -43,12 +43,10 @@ class Calendar {
         return this.month === 11 ? this.year + 1 : this.year;
     }
 
-    // get the previous year
     getPrevYear() {
         return this.month === 0 ? this.year - 1 : this.year;
     }
 
-    // create the calendar
     createCalendar() {
         let firstDay = this.getFirstDay(),
             lastDay = this.getLastDay(),
@@ -67,34 +65,39 @@ class Calendar {
             html += `<li class="calendar__day   calendar__day--prev">${lastDayPrevMonth - i + 1}</li>`;
         }
 
-        // add the current month days to the calendar
         for (let i = 1; i <= lastDay; i++) {
             html += `<li class='calendar__day'>${i}</li>`;
         }
 
-        // add the next month days to the calendar
         for (let i = 1; html.split("calendar__day").length - 1 <= 42; i++) {
             html += `<li class="calendar__day calendar__day--next">${i}</li>`;
         }
 
-        // add the calendar to the html
         daysList.innerHTML = html;
 
-        // add the active class to the current day
         document.querySelectorAll(".calendar__day")[firstDay + new Date().getDate() - 1].classList.add("calendar__day--today");
-
-        // add the event listeners to the buttons
         prevMonthBtn.addEventListener("click", () => {
             calendar = new Calendar(prevMonth, prevYear);
             calendar.createCalendar();
-        }
-        );
+        });
 
         nextMonthBtn.addEventListener("click", () => {
             calendar = new Calendar(nextMonth, nextYear);
             calendar.createCalendar();
-        }
-        );
+        });
+        
+        // eventos touchstart
+        prevMonthBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            calendar = new Calendar(prevMonth, prevYear);
+            calendar.createCalendar();
+        });
+
+        nextMonthBtn.addEventListener("touchstart", e => {
+            e.preventDefault();
+            calendar = new Calendar(nextMonth, nextYear);
+            calendar.createCalendar();
+        });
     }
 }
 

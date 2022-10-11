@@ -41,6 +41,16 @@ export class Weather {
             if (inputSearcher.value != "")
                 weather.changeLocation(inputSearcher.value);
         });
+
+        // eventos touchstart
+        automaticLocationBtn.addEventListener("touchstart", e => {
+            weather.userLocation();
+        });
+
+        buttonSearcher.addEventListener("touchstart", e => {
+            if (inputSearcher.value != "")
+                weather.changeLocation(inputSearcher.value);
+        });
     }
 
     async getWeather() {
