@@ -1,39 +1,39 @@
 import { alertMessage, displayMessage } from '../../js/main.js';
 
-const input_change_message = document.querySelector('#config__name'),
-    remove_bg_btn = document.querySelector('#remove__bg__btn'),
-    menu_screen = document.querySelector('.menu__items');
+const inputChangeMessage = document.querySelector('#config__name'),
+    removeBackgroundBtn = document.querySelector('#remove__bg__btn'),
+    menuScreen = document.querySelector('.menu__items');
 
 function changeInitialMessage() {
-    let user__message = document.querySelector('#user__message');
+    let userMessage = document.querySelector('#user__message');
 
-    if (input_change_message.value == "") {
+    if (inputChangeMessage.value == "") {
         alertMessage("Erro!", "Digite uma mensagem!");
         return;
-    } else if (input_change_message.value.length > 25) {
+    } else if (inputChangeMessage.value.length > 25) {
         alertMessage("Erro!", "Mensagem muito longa!");
         return;
-    } else if (input_change_message.value.length < 3) {
+    } else if (inputChangeMessage.value.length < 3) {
         alertMessage("Erro!", "Mensagem muito curta!");
         return;
     } else {
-        user__message.innerHTML = input_change_message.value;
+        userMessage.innerHTML = inputChangeMessage.value;
         alertMessage("Sucesso!", "Mensagem alterada com sucesso!");
     }
     
-    input_change_message.value = "";
+    inputChangeMessage.value = "";
 }
 
 function removeBackground() {
-    background = window.getComputedStyle(menu_screen).getPropertyValue('background');
+    let background = window.getComputedStyle(menuScreen).getPropertyValue('background');
 
     if (background == "none") {
         displayMessage("Erro!", "Não há fundo para remover!"); return;
     }
 
-    menu_screen.style.background = "none";
+    menuScreen.style.background = "none";
     displayMessage("Sucesso!", "Fundo removido com sucesso!");
 }
 
-input_change_message.addEventListener('keyup', e => { if (e.keyCode == 13) changeInitialMessage(); });
-remove_bg_btn.addEventListener('click', removeBackground);
+inputChangeMessage.addEventListener('keyup', e => { if (e.keyCode == 13) changeInitialMessage(); });
+removeBackgroundBtn.addEventListener('click', removeBackground);

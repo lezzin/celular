@@ -10,10 +10,20 @@
 @import url('../components/weather/weather.css');
 @import url('../components/menu/menu.css');
 @import url('../components/game/game.css');
+@import url('../components/calendar/calendar.css');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }

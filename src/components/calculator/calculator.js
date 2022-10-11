@@ -1,6 +1,6 @@
-const previous_operation_text = document.querySelector("#previous__operation"),
-    current_operation_text = document.querySelector("#current__operation"),
-    calculator_keys = document.querySelectorAll(".buttons__row button");
+const previousOperationText = document.querySelector("#previous__operation"),
+    currentOperationText = document.querySelector("#current__operation"),
+    calculatorKeys = document.querySelectorAll(".buttons__row button");
 
 export class Calculator {
     constructor(previousOperationText, currentOperationText) {
@@ -12,7 +12,7 @@ export class Calculator {
     }
 
     init() {
-        calculator_keys.forEach(function (button) {
+        calculatorKeys.forEach(function (button) {
             button.addEventListener("click", (e) => {
                 const value = e.target.innerText;
 
@@ -142,4 +142,4 @@ export class Calculator {
     }
 }
 
-export const calc = new Calculator(previous_operation_text, current_operation_text);
+export const calc = new Calculator(previousOperationText, currentOperationText);

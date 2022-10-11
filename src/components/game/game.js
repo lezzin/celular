@@ -9,18 +9,18 @@ const cell1 = document.querySelector('#cell-1'),
     cell7 = document.querySelector('#cell-7'),
     cell8 = document.querySelector('#cell-8'),
     cell9 = document.querySelector('#cell-9'),
-    restart_button = document.querySelector('#game__restart'),
-    game_message = document.querySelector('#game__status__message'),
-    player1_pontuation = document.querySelector('#pontuation__player__1'),
-    player2_pontuation = document.querySelector('#pontuation__player__2'),
-    player1_name = document.querySelector('#player__1'),
-    player2_name = document.querySelector('#player__2'),
-    confirm_change_p2 = document.querySelector('#change__name2__confirm'),
-    confirm_change_p1 = document.querySelector('#change__name1__confirm'),
+    restartBtn = document.querySelector('#game__restart'),
+    gameMessage = document.querySelector('#game__status__message'),
+    player1Pontuation = document.querySelector('#pontuation__player__1'),
+    playerPontuation = document.querySelector('#pontuation__player__2'),
+    player1Name = document.querySelector('#player__1'),
+    player2Name = document.querySelector('#player__2'),
+    confirmChangeP1 = document.querySelector('#change__name1__confirm'),
+    confirmChangeP2 = document.querySelector('#change__name2__confirm'),
 
     cells = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9],
 
-    winning_combinations = [
+    winningCombinationsList = [
         [cell1, cell2, cell3],
         [cell4, cell5, cell6],
         [cell7, cell8, cell9],
@@ -61,25 +61,25 @@ export class Game {
             cell.addEventListener('click', this.cellClickHandler);
         });
 
-        restart_button.addEventListener('click', this.restartGame);
+        restartBtn.addEventListener('click', this.restartGame);
 
-        confirm_change_p1.addEventListener('click', () => {
-            if (player1_name.textContent === '' || player1_name.textContent === player2.name) {
+        confirmChangeP1.addEventListener('click', () => {
+            if (player1Name.textContent === '' || player1Name.textContent === player2.name) {
                 displayMessage('O nome do jogador 1 não pode ser vazio ou igual ao jogador 2');
                 return;
             }
 
-            this.setPlayerName(player1, player1_name.textContent);
+            this.setPlayerName(player1, player1Name.textContent);
             this.updateGame();
         });
 
-        confirm_change_p2.addEventListener('click', () => {
-            if (player2_name.textContent === '' || player2_name.textContent === player1.name) {
+        confirmChangeP2.addEventListener('click', () => {
+            if (player2Name.textContent === '' || player2Name.textContent === player1.name) {
                 displayMessage('O nome do jogador 2 não pode ser vazio ou igual ao jogador 1');
                 return;
             }
 
-            this.setPlayerName(player2, player2_name.textContent);
+            this.setPlayerName(player2, player2Name.textContent);
             this.updateGame();
         });
     }
@@ -92,14 +92,14 @@ export class Game {
                 cell.textContent = currentPlayer.symbol;
 
                 if (this.checkWin()) {
-                    game_message.textContent = `${currentPlayer.name} ganhou!`;
+                    gameMessage.textContent = `${currentPlayer.name} ganhou!`;
                     currentPlayer.score++;
                     gameIsRunning = false;
-                    restart_button.classList.add('active');
+                    restartBtn.classList.add('active');
                     this.updateScore();
                 } else if (this.checkDraw()) {
-                    game_message.textContent = "Empate!";
-                    restart_button.classList.add('active');
+                    gameMessage.textContent = "Empate!";
+                    restartBtn.classList.add('active');
                     gameIsRunning = false;
                 } else
                     this.switchPlayer();
@@ -108,7 +108,7 @@ export class Game {
     }
 
     checkWin() {
-        return winning_combinations.some(combination => {
+        return winningCombinationsList.some(combination => {
             return combination.every(cell => { return cell.textContent === currentPlayer.symbol; });
         });
     }
@@ -117,25 +117,25 @@ export class Game {
 
     switchPlayer() {
         currentPlayer = currentPlayer === player1 ? player2 : player1;
-        game_message.textContent = `É a vez do: ${currentPlayer.name}`;
+        gameMessage.textContent = `É a vez do: ${currentPlayer.name}`;
     }
 
     restartGame = () => {
         cells.forEach(cell => { cell.textContent = ''; });
 
-        restart_button.classList.remove('active');
-        game_message.textContent = `É a vez do: ${currentPlayer.name}`;
+        restartBtn.classList.remove('active');
+        gameMessage.textContent = `É a vez do: ${currentPlayer.name}`;
         gameIsRunning = true;
     }
 
     updateScore() {
-        player1_pontuation.textContent = player1.score;
-        player2_pontuation.textContent = player2.score;
+        player1Pontuation.textContent = player1.score;
+        playerPontuation.textContent = player2.score;
     }
 
     updateNames() {
-        player1_name.textContent = player1.name;
-        player2_name.textContent = player2.name;
+        player1Name.textContent = player1.name;
+        player2Name.textContent = player2.name;
     }
 
     updateGame() {
