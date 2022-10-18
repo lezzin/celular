@@ -30,7 +30,7 @@ Nesse projeto, você encontrará diversos "aplicativos", dentre eles estão:
 
 ## Como utilizar
 
-Para rodar o projeto, somente é necessário a utilização de algum servidor, como o XAMPP.
+Para rodar o projeto, somente é necessário a utilização de algum servidor, como o XAMPP ou o Live Server (Extensão VSCODE).
 É preciso pois utilizei exports/imports dentro dos códigos, e sem um servidor, ocorrerá um erro e o projeto não será executado como deveria.
 
 ## Demonstração
