@@ -1,0 +1,102 @@
+@import '../../css/variables.css';
+
+.initial__screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: all .3s ease-out;
+    z-index: var(--zindex-5);
+
+    &.inactive {
+        opacity: 0;
+        pointer-events: all;
+    }
+
+    .top,
+    .bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .top {
+        height: 50%;
+
+        .top__content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+
+            #hour__initial__screen,
+            #user__message,
+            #data__initial__screen {
+                color: #fff;
+            }
+
+            #hour__initial__screen {
+                font-size: 4rem;
+            }
+
+            #date__initial__screen {
+                font-size: .6rem;
+            }
+
+            #user__message {
+                position: relative;
+                width: 100%;
+                font-size: .8rem;
+                animation: move 10s infinite linear;
+            }
+
+            .initial__notifications {
+                display: flex;
+                justify-content: center;
+
+                li {
+                    list-style: none;
+                    margin: 0 2px;
+                    color: #fff;
+                    font-size: .8rem;
+                }
+            }
+        }
+    }
+
+    .bottom {
+        height: 50%;
+
+        .bottom__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 85%;
+            height: 90%;
+
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}

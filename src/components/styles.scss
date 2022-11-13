@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import '../css/variables.css', './Alarm/alarm', './Calculator/calculator', './Calendar/calendar', './Config/config', './Game/game', './InitialScreen/initial_screen', './Menu/menu', './Phone/phone', './Player/player', './Video/video', './Weather/weather';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
