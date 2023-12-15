@@ -1,16 +1,5 @@
 ![Foto do projeto](https://github.com/lezzin/celular-a01/assets/103830032/4e59dbe4-02df-4bec-a3f4-e15a70f92500)
 
-<div style="display: inline_block">
-<br>
-    <img src="https://img.shields.io/badge/javascript-563D7C?style=for-the-badge&logo=javascript&logoColor=white"  alt="javascript Logo" align="center" />
-    <img src="https://img.shields.io/badge/sass-0769AD?style=for-the-badge&logo=SASS&logoColor=white"  alt="jQuery Logo" align="center" />
-</div>
-<br>
-
-![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=lezzin&repo=celular-A01&theme=dark&show_owner=true)
-
-<br>
-
 Samsung Galaxy A01 - criado em HTML, SCSS E JavaScript
 
 Na maioria das funcionalidades do projeto, utilizei o conceito da POO, através dos métodos e classes a fim de aumentar meu conhecimento.
