@@ -1,4 +1,4 @@
-# 📱 Celular Samsung Galaxy A01
+![Foto do projeto](https://github.com/lezzin/celular-a01/assets/103830032/4e59dbe4-02df-4bec-a3f4-e15a70f92500)
 
 <div style="display: inline_block">
 <br>
