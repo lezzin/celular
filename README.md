@@ -1,36 +1,34 @@
 ![Foto do projeto](https://github.com/lezzin/celular-a01/assets/103830032/4e59dbe4-02df-4bec-a3f4-e15a70f92500)
 
-Samsung Galaxy A01 - criado em HTML, SCSS E JavaScript
-
+Uma copia do meu celular Samsung Galaxy A01. Criado em HTML, SCSS e JavaScript.
 Na maioria das funcionalidades do projeto, utilizei o conceito da POO, através dos métodos e classes a fim de aumentar meu conhecimento.
-Todo o design do celular e funcionalidades foram construídos por mim.
-## Funcionalidades
 
-Nesse projeto, você encontrará diversos "aplicativos", dentre eles estão:
+## Recursos
  
-- Uma calculadora
+- Calculadora
 - Alarme
 - Jogo da velha
-- Clima - houve a utilização de uma API
-- Player de áudio 100% personalizado
-- Player de video - não personalizado
-- A hora é atualizada automaticamente de acordo com o horário do seu computador/celular com as funções `setInterval()` e `new Date()`;
-- Caso você esteja utilizando um notebook ou celular, a bateria também é atualizada automaticamente de acordo com a porcentagem da bateria do seu dispositivo, através das funções `setInterval()` e `navigator.getBattery()`.
+- Clima
+- Player de áudio
+- Player de video
+- A hora é atualizada automaticamente de acordo com o horário do seu computador/celular
+- Caso você esteja utilizando um notebook ou celular, a bateria também é atualizada automaticamente de acordo com a porcentagem da bateria do seu dispositivo
 
-## Como utilizar
+## Começando
 
-Para rodar o projeto, somente é necessário a utilização de algum servidor, como o XAMPP ou o Live Server (Extensão VSCODE).
-É preciso pois utilizei exports/imports dentro dos códigos, e sem um servidor, ocorrerá um erro e o projeto não será executado como deveria.
+Localmente:<br>
+Para usar o aplicativo, é necessário a utilização de algum servidor, como o XAMPP ou o Live Server (Extensão VSCODE). 
+* Caso utilize o XAMPP, adicione a pasta do projeto, inicie o servidor e acesse o arquivo `index.html` em um navegador da web. <br>
+* Caso utilize a extensão Live Server, abra o VSCode e clique em Go Live no canto inferior esquerdo da tela.
+ 
+Hospedagem:<br>
+Basta acessar o link: [clique aqui para acessar](https://celular-a01.vercel.app/)
 
-## Demonstração
+## Tecnologias utilizadas:
 
-Player de áudio / jogo da velha
-
-<div style="display: inline_block">
-<img src="https://user-images.githubusercontent.com/103830032/189551957-25b45d51-f9b4-47ad-8562-5760b46b60a1.png" width="256">
-<img src="https://user-images.githubusercontent.com/103830032/189551955-9b054dca-0e8b-4fbf-a339-2f3598d11ee3.png" width="256">
-</div>
-<br>
+* HTML
+* CSS
+* JavaScript
 
 ## Links
 
