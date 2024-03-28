@@ -38,7 +38,8 @@ Basta acessar o link: [clique aqui para acessar](https://celular-a01.vercel.app/
 <br>
 [XAMPP (recomendado)](https://www.apachefriends.org/download.html)
 
-## Minhas redes sociais para contato
+## Contato
+Você pode me encontrar nas seguintes redes sociais:
 
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/leandroadrian_/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leandro-adrian)
