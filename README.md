@@ -1,3 +1,5 @@
+![Celular](https://github.com/lezzin/celular/assets/103830032/bbe937ed-f3c4-4aad-a4d8-4cd5fea6bd24)
+
 # Celular A01
 
 Uma copia do meu celular Samsung Galaxy A01. Criado em HTML, SCSS e JavaScript.
