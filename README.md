@@ -1,6 +1,10 @@
+<h1 align="center"> 🚀 <br> Celular A01</h1>
+
 ![Celular](https://github.com/lezzin/celular/assets/103830032/bbe937ed-f3c4-4aad-a4d8-4cd5fea6bd24)
 
-# Celular A01
+<h4 align="center"><a href="https://celular-a01.vercel.app">Acessar projeto</a></h4>
+
+---
 
 Uma copia do meu celular Samsung Galaxy A01. Criado em HTML, SCSS e JavaScript.
 Na maioria das funcionalidades do projeto, utilizei o conceito da POO, através dos métodos e classes a fim de aumentar meu conhecimento.
@@ -22,9 +26,6 @@ Localmente:<br>
 Para usar o aplicativo, é necessário a utilização de algum servidor, como o XAMPP ou o Live Server (Extensão VSCODE). 
 * Caso utilize o XAMPP, adicione a pasta do projeto, inicie o servidor e acesse o arquivo `index.html` em um navegador da web. <br>
 * Caso utilize a extensão Live Server, abra o VSCode e clique em Go Live no canto inferior esquerdo da tela.
- 
-Hospedagem:<br>
-Basta acessar o link: [clique aqui para acessar](https://celular-a01.vercel.app/)
 
 ## Tecnologias utilizadas:
 
@@ -32,15 +33,9 @@ Basta acessar o link: [clique aqui para acessar](https://celular-a01.vercel.app/
 * CSS
 * JavaScript
 
-## Links
-
-[API utilizada no clima](https://openweathermap.org/api)
-<br>
-[XAMPP (recomendado)](https://www.apachefriends.org/download.html)
-
 ## Contato
 Você pode me encontrar nas seguintes redes sociais:
 
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/leandroadrian_/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leandro-adrian)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/LeandroAdrian)
+[![Instagram](https://img.shields.io/badge/Instagram-0E6212?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/leandroadrian_/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0E6212?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leandro-adrian)
+[![Telegram](https://img.shields.io/badge/Telegram-0E6212?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/LeandroAdrian)
