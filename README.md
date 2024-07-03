@@ -1,4 +1,4 @@
-<h1 align="center"> 🚀 <br> Celular A01</h1>
+<h1 align="center"> 📱 <br> Celular A01</h1>
 
 ![Celular](https://github.com/lezzin/celular/assets/103830032/bbe937ed-f3c4-4aad-a4d8-4cd5fea6bd24)
 
