@@ -34,8 +34,8 @@ Para usar o aplicativo, é necessário a utilização de algum servidor, como o 
 * JavaScript
 
 ## Contato
+
 Você pode me encontrar nas seguintes redes sociais:
 
 [![Instagram](https://img.shields.io/badge/Instagram-0E6212?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/leandroadrian_/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0E6212?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leandro-adrian)
-[![Telegram](https://img.shields.io/badge/Telegram-0E6212?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/LeandroAdrian)
